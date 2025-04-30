@@ -174,18 +174,19 @@
     margin: 50px auto;
     padding: 30px;
     background-color: white;
-    box-shadow: 0 0 10px var(--box-shadow-color);
-    max-width: 800px;
+    max-width: 1200px;
+    gap: 20px;
   }
   
   .profile-info {
     flex: 1;
     text-align: left;
-    margin-right: 20px;
+    padding-left: 170px;
+    
   }
   
   .profile-photo {
-    margin-left: 20px;
+    padding-right: 170px;
   }
   
   .profile-photo img {
@@ -210,10 +211,14 @@
   @media (max-width: 1024px) {
     .gall {
       grid-template-columns: 1fr;
+      .web-album{
+        display: none;
+      }
     }
   
-    .albumm-grid {
-      grid-template-columns: 1fr;
+    .albumm-cover{
+      height: auto;
+      width: auto;
     }
   
     .cont-section {
@@ -231,9 +236,41 @@
     .ttle-section h2 {
       font-size: 3em;
     }
+
+    .profile-info {
+      flex: 1;
+      text-align: left;
+      padding-left: 10px;
+      
+    }
+    
+    .profile-photo {
+      padding-right: 10px;
+    }
+    
+
   }
   
   @media (max-width: 768px) {
+    .top-logo img {
+      width: 80px;
+    }
+
+    nav {
+      gap: 100px;
+    }
+
+    .gall {
+      grid-template-columns: 1fr;
+      .web-album{
+        display: none;
+      }
+
+      .albumm-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .ttle-section h1 {
       font-size: 2em;
     }
@@ -243,12 +280,16 @@
     }
   
     .profile-section {
-      flex-direction: column;
-      align-items: flex-start;
+      flex-direction: column-reverse;
+      align-items: center;
     }
   
     .profile-info {
       width: 100%;
+
+      h1{
+        text-align: center;
+      }
     }
   
     .profile-photo img {
@@ -258,6 +299,14 @@
   }
   
   @media (max-width: 480px) {
+    .top-logo img {
+      width: 80px;
+    }
+
+    nav {
+      gap: 100px;
+    }
+
     .ttle-section h1 {
       font-size: 1.5em;
     }
