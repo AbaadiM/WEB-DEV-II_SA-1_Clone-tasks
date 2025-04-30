@@ -1,216 +1,235 @@
-/* Loading our fonts from Google - these help make the text look nice */
+
 @import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&family=Teko:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
-/* These are our main colors and measurements we'll use everywhere */
-:root {
-    --color-primary: #231651;    /* Main blue color */
-    --color-background: #4dccbd; /* Background color */
-    --color-text: #FFFFFF;       /* Text color */
-    --color-shadow: #070410;     /* Shadow color */
-    --spacing-small: 16px;       /* Small spaces between things */
-    --spacing-medium: 32px;      /* Medium spaces between things */
-    --spacing-large: 48px;       /* Big spaces between things */
-    --border-radius: 10px;       /* How round the corners are */
-}
-
-/* Basic page setup */
-body {
-    background-color: var(--color-background);
-    margin: 0;                    /* Remove default spacing */
-    font-family: "Lato", sans-serif;  /* Main text font */
-}
-
-/* Top navigation bar */
-.top-nav {
-    background-color: var(--color-primary);
-    padding: var(--spacing-small);
-    display: flex;               /* Makes items go side by side */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  button {
+    font-size: 2em;
+    font-family: "Teko", sans-serif;
+    padding: 16px;
+    border-radius: 16px;
+    background-color: #cbd651;
+  }
+  
+  .movie {
+    background-color: #4dc2dc;
+    border: 1px solid #070410;
+    box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.6);
+  }
+  .movie .movie img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .movie-details {
+    display: flex;
+    padding: 16px;
+    font-family: "Lato", sans-serif;
+    font-size: 1.5em;
+    text-align: justify;
+  }
+  
+  header {
+    display: flex;
+    background-color: #4dc2dc;
     justify-content: space-between;
     align-items: center;
-    color: var(--color-text);
+    padding: 16px;
+    box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.6);
+  }
+  header h1 {
+    font-size: 3em;
     font-family: "Teko", sans-serif;
-    box-shadow: 0 10px 5px var(--color-shadow);  /* Makes it look lifted */
-}
-
-/* Website name styling */
-.brand h1 {
-    margin: 0;
-    font-size: 3em;              /* Makes the text bigger */
-}
-
-/* Navigation menu items */
-.menu {
+  }
+  header nav {
     display: flex;
-    gap: 48px;                   /* Space between menu items */
-    font-size: 1.2em;
-}
-
-/* Navigation links */
-.menu a {
-    color: var(--color-text);
-    text-decoration: none;       /* Removes the underline */
-}
-
-/* Search button */
-.search-btn {
-    font-size: 2em;              /* Big text size */
-    font-family: "Teko", sans-serif;
-    padding: var(--spacing-small);
-    border: 0;                   /* No border line */
-    border-radius: var(--border-radius);
-    color: var(--color-shadow);
-}
-
-/* Main content area layout */
-.content-wrapper {
-    max-width: 900px;            /* Stops the content from getting too wide */
-    display: grid;               /* Uses grid layout */
-    grid-template-columns: repeat(auto-fit, 1fr);
-    grid-template-areas:         /* How the sections are arranged */
-        "animated animated"
-        "musical biopic"
-        "fantasy fantasy"
-        "romance romance"
-        "adventure adventure";
-    margin: var(--spacing-large) auto;
-    gap: var(--spacing-small);   /* Space between grid items */
-}
-
-/* Movie card basic style */
-.movie-card {
-    background-color: var(--color-primary);
-    color: var(--color-text);
-    font-size: 1.5em;            /* Makes text bigger */
-    margin: var(--spacing-small);
-    box-shadow: 10px 10px 10px var(--color-shadow);  /* Adds depth */
+    gap: 48px;
+  }
+  header nav a {
+    text-decoration: none;
+    color: #070410;
+    font-size: 18px;
+    font-family: "Lato", sans-serif;
+  }
+  header button {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+  
+  .movies-container {
     display: grid;
-}
-
-/* Movie poster images */
-.poster img {
-    height: 400px;
-    width: 400px;
-    object-fit: cover;           /* Makes images fill their space nicely */
-}
-
-/* Movie information section */
-.content {
-    box-sizing: border-box;      /* Includes padding in width calculation */
-    padding: var(--spacing-small);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: "large large" "middleone middletwo" "bottomone bottomone" "bottomtwo bottomtwo" "bottomthree bottomthree";
+    margin: 48px auto;
+    gap: 48px;
+    max-width: 900px;
+  }
+  .movies-container .large {
     display: flex;
-    gap: var(--spacing-small);   /* Space between elements */
-}
-
-/* Watch button style */
-.watch-button {
-    font-size: 2em;              /* Big text */
-    font-family: "Teko", sans-serif;
-    padding: var(--spacing-small);
-    border: 0;                   /* No border */
-    border-radius: var(--border-radius);
-    color: var(--color-shadow);
-}
-
-/* Layout for animated movie cards */
-.animated {
-    grid-area: animated;         /* Places in the animated section */
-    grid-template-rows: 1fr 0.6fr;
-    grid-template-areas: 
-        "poster poster"
-        "content button";
-}
-
-/* Animated movie poster sizing */
-.animated img {
+    flex-direction: column;
+    grid-area: large;
+  }
+  .movies-container .large img {
     width: 100%;
-    height: 250px;
-    object-position: 0% 12%;     /* Adjusts image position */
-}
-
-.animated .content {
-    flex: 1;                     /* Takes up remaining space */
-}
-
-/* Musical and biopic card layouts */
-.musical, .biopic {
-    grid-template-rows: 1.25fr 1fr;
-    grid-template-areas: 
-        "poster"
-        "content";               /* Poster above content */
-}
-
-/* Where each type of movie card goes in the grid */
-.musical { grid-area: musical; } /* Goes in musical section */
-.biopic { grid-area: biopic; }   /* Goes in biopic section */
-.fantasy { grid-area: fantasy; } /* Goes in fantasy section */
-.romance { grid-area: romance; } /* Goes in romance section */
-.adventure { grid-area: adventure; } /* Goes in adventure section */
-
-/* For tablet-sized screens */
-@media screen and (max-width: 1023px) {
-    /* Adjusts layout for medium screens */
-    .content-wrapper {
-        margin: var(--spacing-medium);
-        grid-template-areas: 
-            "animated musical"
-            "biopic fantasy"
-            "romance adventure";  /* New layout for smaller screens */
+    height: 300px;
+    object-fit: cover;
+    object-position: 0px 11%;
+  }
+  .movies-container .large button {
+    line-height: 0.9;
+  }
+  .movies-container .large .movie-details {
+    gap: 16px;
+    text-align: left;
+  }
+  .movies-container .large p {
+    width: 655px;
+  }
+  
+  .middle-row {
+    display: flex;
+    flex-direction: column;
+  }
+  .middle-row #middle-movie-one {
+    grid-area: middleone;
+  }
+  .middle-row #middle-movie-two {
+    grid-area: middletwo;
+  }
+  .middle-row img {
+    width: 100%;
+    height: 100%;
+  }
+  .middle-row .movie-details {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .bottom-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column: span 2;
+  }
+  .bottom-column #bottom-movie-one {
+    grid-area: bottomone;
+  }
+  .bottom-column #bottom-movie-two {
+    grid-area: bottomtwo;
+  }
+  .bottom-column #bottom-movie-three {
+    grid-area: bottomthree;
+  }
+  .bottom-column .movie-details {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .bottom-column img {
+    width: 100%;
+  }
+  
+  @media (min-width: 720px) and (max-width: 1024px) {
+    header nav {
+      gap: 32px;
     }
-
-    /* Adjusts card sizes */
-    .movie-card {
-        grid-auto-columns: minmax(100px, 1fr);
+    .movies-container {
+      grid-template-areas: "large middleone" "middletwo bottomone" "bottomtwo bottomthree";
+      gap: 32px;
+      margin: 32px;
     }
-
-    /* Stacks content vertically */
-    .movie-card .content {
-        flex-direction: column;
-        justify-content: space-between;
+    .movies-container .large img {
+      width: 100%;
+      height: auto;
     }
-}
-
-/* For phone-sized screens */
-@media screen and (max-width: 719px) {
-    /* Top navigation changes */
-    .top-nav {
-        margin-bottom: var(--spacing-small);
-        box-shadow: none;        /* Removes shadow on mobile */
+    .movies-container .large button {
+      line-height: normal;
     }
-
-    .brand h1 {
-        font-size: 2em;          /* Smaller text */
+    .movies-container .large p {
+      width: 100%;
     }
-
-    .menu {
-        display: none;           /* Hides menu on mobile */
+    .movies-container .large .movie-details {
+      flex-direction: column;
+      height: 100%;
+      text-align: justify;
+      justify-content: space-between;
     }
-
-    /* Single column layout */
-    .content-wrapper {
-        max-width: 100%;
-        margin: 0;
-        gap: 0;
-        grid-template-areas: 
-            "animated"
-            "musical"
-            "biopic"
-            "fantasy"
-            "romance"
-            "adventure";         /* Everything in one column */
+    .middle-row img {
+      width: 100%;
+      height: auto;
     }
-
-    /* Simplified card style for mobile */
-    .movie-card {
-        margin: 0 0 var(--spacing-small) 0;
-        box-shadow: none;        /* No shadows on mobile */
-        grid-template-rows: auto;
+    .middle-row .movie-details {
+      justify-content: space-between;
+      height: 100%;
     }
-
-    .movie-card .content {
-        justify-content: flex-start; /* Aligns content to top */
+    .bottom-column {
+      display: flex;
+      flex-direction: column;
+      grid-column: auto;
     }
-
-    .watch-button {
-        padding: 0;              /* Removes button padding */
+    .bottom-column img {
+      width: 100%;
+      height: auto;
     }
-}
+    .bottom-column .movie-details {
+      height: 100%;
+    }
+  }
+  @media (min-width: 360px) and (max-width: 720px) {
+    header h1 {
+      font-size: 2em;
+    }
+    header nav {
+      gap: 16px;
+    }
+    .movies-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: "large" "middleone" "middletwo" "middle3" "bottomone" "bottomtwo" "bottomthree";
+      gap: 16px;
+      margin: 16px;
+    }
+    .movies-container .large img {
+      width: 100%;
+      height: auto;
+    }
+    .movies-container .large button {
+      line-height: normal;
+    }
+    .movies-container .large .movie-details {
+      flex-direction: column;
+    }
+    .movies-container .large p {
+      width: 100%;
+    }
+    .middle-row img {
+      width: 100%;
+      height: auto;
+    }
+    .middle-row .movie-details {
+      justify-content: space-between;
+    }
+    .bottom-column {
+      display: flex;
+      flex-direction: column;
+      grid-column: auto;
+    }
+    .bottom-column img {
+      width: 100%;
+      height: auto;
+    }
+    .bottom-column .movie-details {
+      gap: 16px;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    nav a {
+      display: none;
+    }
+  }
